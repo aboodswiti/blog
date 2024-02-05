@@ -1,0 +1,20 @@
+
+<div class="container">
+
+
+<h1>Pages#notifications</h1>
+
+<ul>
+
+<% @notification.each do |notification| %>
+
+<li><%= notification.message %></li>
+
+<% end %>
+<li><%= @read.count %></li>
+<li><%= @unread.count %></li>
+
+    </ul>
+<%= link_to 'Go back', root_path %>
+
+</div>

@@ -10,6 +10,9 @@ class PostsController < ApplicationController
   def show
     @post.update(views: @post.views + 1)
     @comments = @post.comments.order(created_at: :desc)
+    mark_notifications_as_read
+
+
   end
 
   # GET /posts/new
@@ -68,5 +71,11 @@ class PostsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def post_params
       params.require(:post).permit(:title, :body)
+    end
+
+    def mark_notifications_as_read
+      current_user.notifications.mark_as_read
+
+
     end
 end

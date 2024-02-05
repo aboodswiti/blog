@@ -165,6 +165,8 @@ GEM
       racc (~> 1.4)
     nokogiri (1.16.0-x86_64-linux)
       racc (~> 1.4)
+    noticed (2.1.2)
+      rails (>= 6.1.0)
     orm_adapter (0.5.0)
     psych (5.1.2)
       stringio
@@ -284,6 +286,7 @@ DEPENDENCIES
   image_processing (~> 1.2)
   importmap-rails
   jbuilder
+  noticed (~> 2.1)
   puma (>= 5.0)
   rails (~> 7.1.3)
   selenium-webdriver

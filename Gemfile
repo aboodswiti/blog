@@ -68,3 +68,4 @@ end
 
 
 gem 'devise'
+gem "noticed", "~> 2.1"
