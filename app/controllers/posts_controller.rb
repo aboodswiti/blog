@@ -74,7 +74,7 @@ class PostsController < ApplicationController
     end
 
     def mark_notifications_as_read
-      current_user.notifications.mark_as_read
+      # current_user.notifications.mark_as_read
 
 
     end

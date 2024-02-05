@@ -9,4 +9,7 @@ class User < ApplicationRecord
   has_many :notifications, as: :recipient, dependent: :destroy, class_name:"Noticed::Notification"
   has_many :notification_mentions, as: :record, dependent: :destroy, class_name:"Noticed::Event"
 
+  def self.ransackable_attributes(auth_object = nil)
+    ["created_at", "email", "encrypted_password", "id", "id_value", "name", "remember_created_at", "reset_password_sent_at", "reset_password_token", "updated_at", "views"]
+  end
 end
