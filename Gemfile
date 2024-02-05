@@ -71,3 +71,5 @@ gem 'devise'
 gem "noticed", "~> 2.1"
 
 gem "ransack", "~> 4.1"
+
+gem "simple_form", "~> 5.3"
