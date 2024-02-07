@@ -1,0 +1,61 @@
+.admin_nav {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .admin_nav .btn-group .btn {
+    border: #2b234a solid 1px;
+    margin-right: 10px;
+  }
+  
+  .admin_nav .btn-group .btn:last-child {
+    margin-right: 0;
+  }
+
+
+  /* app/assets/stylesheets/custom_styles.css */
+
+/* Style for table header */
+.table th {
+    font-weight: bold;
+  }
+  
+  /* Style for table rows */
+  .table tbody tr {
+    border-bottom: 1px solid #dee2e6;
+  }
+  
+  /* Style for table cell padding */
+  .table td,
+  .table th {
+    padding: 0.75rem;
+  }
+  
+  /* Add custom background color to even rows */
+  .table tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
+  }
+
+  /* Add margin bottom to rows */
+.row {
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Style for the heading */
+  h1 {
+    color: #007bff;
+  }
+  
+  /* Style for title and views */
+  p.fw-bold {
+    color: #6c757d;
+  }
+  
+  /* Style for comments container */
+  .border-primary {
+    border-color: #007bff !important;
+  }
+  
+  

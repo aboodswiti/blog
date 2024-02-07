@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  authenticate :user, ->(user) { user.admin? } do
+    get 'admin', to: 'admin#index'
+    get 'admin/posts'
+    get 'admin/comments'
+    get 'admin/users'
+    get 'admin/post/:id', to: 'admin#show_post', as: 'admin_post'
+    get 'admin/comment/:id', to: 'admin#show_comment', as: 'admin_comment'
+
+  end
+  
   get 'users/profile'
   get 'search', to: 'search#index'
 

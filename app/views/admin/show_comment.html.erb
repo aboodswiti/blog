@@ -1,0 +1,42 @@
+<div class="container">
+  <h1 class="text-center mb-5">Administrator</h1>
+  <%= render "admin/nav_links" %>
+  
+  <div class="text-center mt-5">
+    <div class="btn-group">
+      <!-- You can add buttons here if needed -->
+    </div>
+  </div>
+
+  <div class="row mt-1">
+    <div class="col">
+      <p class="fw-bold">Title: <span class="fw-normal"> <%= @comment.post.title %></span></p>
+    </div>
+  </div>
+
+  <div class="row mt-1">
+    <div class="col">
+      <p class="fw-bold">Views: <span class="fw-normal"><%= @comment.post.views %> </span></p>
+    </div>
+  </div>
+
+  <div class="row mt-1">
+    <div class="col">
+      <p class="fw-bold">Author: <span class="fw-normal"><%= @comment.post.user.email %> | <%= @comment.post.user.name %> | <%= pluralize(@comment.post.user.views, "View") %> </span></p>
+    </div>
+  </div>
+
+  <div class="row mt-1">
+    <div class="col">
+      <p class="fw-bold">Body: <span class="fw-normal"><%= @comment.body %> </span></p>
+    </div>
+  </div>
+
+  <div class="row mt-2">
+    <div class="col">
+      <p class="fw-bold">This post has <%= pluralize(@comment.post.comments.size, "Comment") %></p>
+    </div>
+  </div>
+
+  <%= render 'comments/comment', post: @comment.post, comment: @comment , role: current_user.role %>
+</div>

@@ -10,6 +10,14 @@ class User < ApplicationRecord
   has_many :notification_mentions, as: :record, dependent: :destroy, class_name:"Noticed::Event"
 
   def self.ransackable_attributes(auth_object = nil)
-    ["created_at", "email", "encrypted_password", "id", "id_value", "name", "remember_created_at", "reset_password_sent_at", "reset_password_token", "updated_at", "views"]
+    ["created_at", "email", "encrypted_password", "id", "id_value", "name", "remember_created_at", "reset_password_sent_at", "reset_password_token", "role", "updated_at", "views"]
+  end
+
+
+  enum role: [:user, :admin]
+  after_initialize :set_default_role, :if => :new_record?
+
+  def set_default_role
+    self.role ||= :user
   end
 end

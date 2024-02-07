@@ -1,0 +1,27 @@
+<div class="container">
+  <h1 class="text-center display-4 mt-2" style="color: green">Administrator</h1>
+  <%= render 'admin/nav_links' %>
+  <div class="table-responsive">
+    <table class="table table-dark table-striped">
+      <thead>
+        <tr>
+          <th scope="col"><%= link_to "Id", { sort_by: "id", order: @sort_order == "asc" ? "desc" : "asc" } %></th>
+          <th scope="col"><%= link_to "Post", { sort_by: "title", order: @sort_order == "asc" ? "desc" : "asc" } %></th>
+          <th scope="col"><%= link_to "Author", { sort_by: "user_id", order: @sort_order == "asc" ? "desc" : "asc" } %></th>
+          <th scope="col">Comments</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <% @posts.each do |post| %>
+          <tr>
+            <td><%= post.id %></td>
+            <td><%= link_to post.title.truncate(15), admin_post_path(post) %></td>
+            <td><%= post.user.name %></td>
+            <td><%= pluralize(post.comments.size, "Comment") %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

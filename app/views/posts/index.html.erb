@@ -1,13 +1,22 @@
-<p style="color: green"><%= notice %></p>
 <div class="container">
-  <h1>Posts</h1>
-  <div id="posts">
+  <h1 class="text-center mt-5">Posts</h1>
+  <div class="text-center my-4">
+    <%= link_to "New post", new_post_path, class: "btn btn-success" %>
+  </div>
+
+  <div class="row mt-4">
     <% @posts.each do |post| %>
-      <%= render post %>
-      <p>
-        <%= link_to "Show this post", post %>
-      </p>
+      <div class="col-12 mb-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><%= post.title %></h5>
+            <p class=" card-text"><%= post.body %></p>
+              <p class=" fst-italic"> <%= pluralize(post.comments.size, "Comment") %></p>
+
+            <a href="<%= post_path(post) %>" class="btn btn-primary">Show this post</a>
+          </div>
+        </div>
+      </div>
     <% end %>
   </div>
-  <%= link_to "New post", new_post_path %>
 </div>
