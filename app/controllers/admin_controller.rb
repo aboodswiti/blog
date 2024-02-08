@@ -9,23 +9,23 @@ class AdminController < ApplicationController
     @sort_by = params[:sort_by] || "id"
     @sort_order = params[:order] || "asc"
   
-    @posts = Post.all.includes(:user, :comments)
+    @posts = Post.all.includes(:user)
                  .order("#{@sort_by} #{@sort_order}")
   end
 
 
   def comments
-    @comments = Comment.all.includes(:user).order(created_at: :desc)
+    @comments = Comment.all.includes(:user, :post, :rich_text_body).order(created_at: :desc)
 
   end
 
   def users
-    @users = User.all.includes(:posts, :comments).order(created_at: :desc)
+    @users = User.all.order(created_at: :desc)
 
   end
 
   def show_comment
-    @comment = Comment.includes(:user).find(params[:id])
+    @comment = Comment.includes(:user, :rich_text_body,:post ).find(params[:id])
   end
   def show_post
     @post = Post.includes(:user, :comments).find(params[:id])
