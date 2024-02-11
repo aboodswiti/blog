@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   end
   
-  get 'users/profile'
+  # get 'users/profile'
   get 'search', to: 'search#index'
 
   devise_for :users, controllers: {
@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   }
 
   get 'u/:id', to: 'users#profile', as: 'user';
+
+  resources :after_signup
 
   resources :posts do
     resources :comments

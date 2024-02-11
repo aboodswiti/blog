@@ -22,7 +22,7 @@
 
   <div class="row mt-1">
     <div class="col">
-      <p class="fw-bold">Author: <span class="fw-normal"><%= @comment.post.user.email %> | <%= @comment.post.user.name %> | <%= pluralize(@comment.post.user.views, "View") %> </span></p>
+      <p class="fw-bold">Author: <span class="fw-normal"><%= @comment.post.user.email %> | <%= @comment.post.user.full_name %> | <%= pluralize(@comment.post.user.views, "View") %> </span></p>
     </div>
   </div>
 

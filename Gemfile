@@ -77,3 +77,4 @@ gem "simple_form", "~> 5.3"
 gem "friendly_id", "~> 5.5"
 
 gem "bullet", "~> 7.1"
+gem 'wicked'

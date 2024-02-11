@@ -17,7 +17,7 @@
           <tr>
             <td><%= comment.id %></td>
             <td><%= link_to comment.post.title.truncate(15), admin_post_path(comment.post) %></td>
-            <td><%= comment.user.name %></td>
+            <td><%= comment.user.full_name %></td>
             <td><%= link_to comment.body.to_plain_text.truncate(15), admin_comment_path(comment) %></td>
           </tr>
         <% end %>

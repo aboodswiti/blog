@@ -9,7 +9,6 @@
           <th scope="col"><%= link_to "Post", { sort_by: "title", order: @sort_order == "asc" ? "desc" : "asc" } %></th>
           <th scope="col"><%= link_to "Author", { sort_by: "user_id", order: @sort_order == "asc" ? "desc" : "asc" } %></th>
           <th scope="col">Comments</th>
-
         </tr>
       </thead>
       <tbody>
@@ -17,7 +16,7 @@
           <tr>
             <td><%= post.id %></td>
             <td><%= link_to post.title.truncate(15), admin_post_path(post) %></td>
-            <td><%= post.user.name %></td>
+            <td><%= post.user.full_name %></td>
             <td><%= pluralize(post.comments.size, "Comment") %></td>
           </tr>
         <% end %>
