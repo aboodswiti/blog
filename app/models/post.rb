@@ -3,19 +3,21 @@ class Post < ApplicationRecord
     validates :title, presence: true, length: { minimum: 5, maximum: 50 }
     validates :body, presence: true
     belongs_to :user
-    
+    belongs_to :category
+
+
     has_many :comments, dependent: :destroy
 
     has_rich_text :body
     has_one :content, class_name: 'ActionText::RichText', as: :record, dependent: :destroy
   
-
     def self.ransackable_attributes(auth_object = nil)
-      ["created_at", "id", "id_value", "title", "updated_at", "user_id", "views"]
+      ["category_id", "comments_count", "created_at", "id", "id_value", "slug", "title", "updated_at", "user_id", "views"]
     end
     def self.ransackable_associations(auth_object = nil)
-      ["comments", "content", "notification_mentions", "rich_text_body", "user"]
+      ["category", "comments", "content", "notification_mentions", "rich_text_body", "slugs", "user"]
     end
+  
     # has_noticed_notification modal_name: "Notification"
     # has_many :notification, through: :user, dependent: :destroy
     has_many :notification_mentions, through: :user, dependent: :destroy, class_name:"Noticed::Event"

@@ -39,12 +39,18 @@ Address.first_or_create(street: '123 Main St',
                         zip: '12345',
                         country: 'USA',
                         user: john)
+category = Category.first_or_create!(name:"Uncategorized", display_in_nav: true)
+           Category.first_or_create!(name:"Cars", display_in_nav: false)
+           Category.first_or_create!(name:"Bikes", display_in_nav: true)
+           Category.first_or_create!(name:"Boats", display_in_nav: true)
 
 elapsed = Benchmark.measure do
   10.times do |x|
     puts "Creating post #{x}"
     post = dean.posts.create!(title: "Title #{x}",
-                              body: "Body #{x} Words go here Idk")
+                              body: "Body #{x} Words go here Idk",
+                              user: dean,
+                              category: category)
 
     5.times do |y|
       puts "Creating comment #{y} for post #{x}"

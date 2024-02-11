@@ -2,7 +2,6 @@
   <% if post.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
       <ul>
         <% post.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -10,18 +9,19 @@
       </ul>
     </div>
   <% end %>
-
   <div>
     <%= form.label :title, style: "display: block" %>
     <%= form.text_field :title %>
   </div>
-
   <div>
-    <%= form.label :body, style: "display: block" %>
-    <%= form.rich_text_area :body %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+    <%= form.label :category, style: "display: block" %>
+    <%= form.select :category_id, options_for_select(Category.all.order(name: :asc)
+        .collect { |cat| [cat.name, cat.id] }) %>
+    <div>
+      <%= form.label :body, style: "display: block" %>
+      <%= form.rich_text_area :body %>
+    </div>
+    <div>
+      <%= form.submit %>
+    </div>
+  <% end %>
