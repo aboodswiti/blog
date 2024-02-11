@@ -28,6 +28,6 @@ class AdminController < ApplicationController
     @comment = Comment.includes(:user, :rich_text_body,:post ).find(params[:id])
   end
   def show_post
-    @post = Post.includes(:user, :comments).find(params[:id])
+    @post = Post.includes(:user, comments: [:user, :rich_text_body]).find(params[:id])
   end
 end
