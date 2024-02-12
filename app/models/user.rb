@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :notification_mentions, as: :record, dependent: :destroy, class_name:"Noticed::Event"
   has_one :address, dependent: :destroy, inverse_of: :user, autosave: true
 
+  has_one_attached :avatar
+
   enum role: %i[user admin]
   after_initialize :set_default_role, if: :new_record?
 
@@ -51,7 +53,9 @@ class User < ApplicationRecord
     ["created_at", "email", "encrypted_password", "id", "id_value", "first_name", "last_name", "remember_created_at", "reset_password_sent_at", "reset_password_token", "role", "updated_at", "views"]
   end
 
-
+  def self.ransackable_associations(auth_object = nil)
+    ["address", "avatar_attachment", "avatar_blob", "comments", "notification_mentions", "notifications", "posts"]
+    end
   private
 
   def set_default_role
