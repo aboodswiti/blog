@@ -9,6 +9,10 @@ Rails.application.routes.draw do
     get 'admin/comment/:id', to: 'admin#show_comment', as: 'admin_comment'
 
   end
+
+  get 'checkout', to: 'checkouts#show'
+  get 'checkout/success', to: 'checkouts#success'
+  get 'billing', to: 'billing#show'
   
   # get 'users/profile'
   get 'search', to: 'search#index'

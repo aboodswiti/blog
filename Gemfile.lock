@@ -173,6 +173,8 @@ GEM
     noticed (2.1.2)
       rails (>= 6.1.0)
     orm_adapter (0.5.0)
+    pay (7.1.1)
+      rails (>= 6.0.0)
     pg (1.5.4)
     psych (5.1.2)
       stringio
@@ -253,6 +255,7 @@ GEM
     stimulus-rails (1.3.3)
       railties (>= 6.0.0)
     stringio (3.1.0)
+    stripe (10.8.0)
     thor (1.3.0)
     timeout (0.4.1)
     turbo-rails (1.5.0)
@@ -299,6 +302,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   noticed (~> 2.1)
+  pay (~> 7.1)
   pg (~> 1.1)
   puma (>= 5.0)
   rails (~> 7.1.3)
@@ -307,6 +311,7 @@ DEPENDENCIES
   simple_form (~> 5.3)
   sprockets-rails
   stimulus-rails
+  stripe (~> 10.8)
   turbo-rails
   tzinfo-data
   web-console

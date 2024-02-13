@@ -12,6 +12,8 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
 
+  pay_customer stripe_attributes: :stripe_attributes
+
   enum role: %i[user admin]
   after_initialize :set_default_role, if: :new_record?
 
@@ -48,6 +50,20 @@ class User < ApplicationRecord
     # step parameter appears before or we are on the current step
     form_steps.index(step.to_s) <= form_steps.index(form_step.to_s)
   end
+
+  def stripe_attributes(pay_customer)
+    {
+      address: {
+        city: pay_customer.owner.city,
+        country: pay_customer.owner.country
+      },
+      metadata: {
+        pay_customer_id: pay_customer.id,
+        user_id: id # or pay_customer.owner_id
+      }
+    }
+  end
+
 
   def self.ransackable_attributes(auth_object = nil)
     ["created_at", "email", "encrypted_password", "id", "id_value", "first_name", "last_name", "remember_created_at", "reset_password_sent_at", "reset_password_token", "role", "updated_at", "views"]

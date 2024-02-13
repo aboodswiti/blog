@@ -78,3 +78,6 @@ gem "friendly_id", "~> 5.5"
 
 gem "bullet", "~> 7.1"
 gem 'wicked'
+
+gem "stripe", "~> 10.8"
+gem "pay", "~> 7.1"
