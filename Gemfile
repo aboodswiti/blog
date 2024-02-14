@@ -81,3 +81,12 @@ gem 'wicked'
 
 gem "stripe", "~> 10.8"
 gem "pay", "~> 7.1"
+
+gem "ahoy_matey", "~> 5.0"
+
+gem 'pry-byebug', '~> 3.10', '>= 3.10.1'
+
+gem "groupdate", "~> 6.4"
+
+gem "chartkick", "~> 5.0"
+gem 'activerecord-import'
