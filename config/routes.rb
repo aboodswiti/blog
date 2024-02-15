@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :projects
   resources :categories
+  patch 'drag/project'
+
   authenticate :user, ->(user) { user.admin? } do
     get 'admin', to: 'admin#index'
     get 'admin/posts'
