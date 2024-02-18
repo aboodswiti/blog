@@ -92,3 +92,5 @@ gem "chartkick", "~> 5.0"
 gem 'activerecord-import'
 
 gem "acts_as_list", "~> 1.1"
+
+gem "whenever", "~> 1.0"
