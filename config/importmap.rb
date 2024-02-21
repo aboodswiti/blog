@@ -9,3 +9,6 @@ pin "trix"
 pin "@rails/actiontext", to: "actiontext.esm.js"
 pin "chartkick", to: "chartkick.js"
 pin "Chart.bundle", to: "Chart.bundle.js"
+pin "dropzone" # @6.0.0
+pin "just-extend" # @5.1.1
+pin "@rails/activestorage", to: "@rails--activestorage.js" # @7.1.3

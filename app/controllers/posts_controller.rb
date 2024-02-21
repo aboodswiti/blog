@@ -32,6 +32,11 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user = current_user
     respond_to do |format|
+      if params[:post][:images].present?
+        params[:post][:images].each do |image|
+          @post.images.attach(image)
+        end
+      end
       if @post.save
         format.html { redirect_to post_url(@post), notice: "Post was successfully created." }
         format.json { render :show, status: :created, location: @post }
@@ -43,9 +48,39 @@ class PostsController < ApplicationController
   end
 
   # PATCH/PUT /posts/1 or /posts/1.json
+  # def update
+  #   respond_to do |format|
+  #     if @post.update(post_params)
+  #       if params[:post][:images].present?
+  #         params[:post][:images].each do |image|
+  #           @post.images.attach(image)
+  #         end
+  #       end
+  #       format.html { redirect_to post_url(@post), notice: "Post was successfully updated." }
+  #       format.json { render :show, status: :ok, location: @post }
+  #     else
+  #       format.html { render :edit, status: :unprocessable_entity }
+  #       format.json { render json: @post.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
   def update
     respond_to do |format|
       if @post.update(post_params)
+        # Delete attached images if requested
+        if params[:post][:remove_images].present?
+          params[:post][:remove_images].each do |image_id|
+            @post.images.find_by(id: image_id)&.purge
+          end
+        end
+        
+        # Attach new images if present
+        if params[:post][:images].present?
+          params[:post][:images].each do |image|
+            @post.images.attach(image)
+          end
+        end
+  
         format.html { redirect_to post_url(@post), notice: "Post was successfully updated." }
         format.json { render :show, status: :ok, location: @post }
       else
@@ -54,7 +89,6 @@ class PostsController < ApplicationController
       end
     end
   end
-
   # DELETE /posts/1 or /posts/1.json
   def destroy
     @post.destroy!
@@ -73,7 +107,7 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:title, :body, :category_id)
+      params.require(:post).permit(:title, :body, :category_id,)
     end
 
     def mark_notifications_as_read
