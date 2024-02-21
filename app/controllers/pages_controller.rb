@@ -5,7 +5,9 @@ class PagesController < ApplicationController
 
     # @portal_session = current_user.payment_processor.billing_portal
   end
-
+  def hello
+    HelloJob.perform_at(10.seconds.from_now)
+  end
   def about
   end
 end

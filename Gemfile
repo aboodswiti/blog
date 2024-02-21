@@ -94,3 +94,7 @@ gem 'activerecord-import'
 gem "acts_as_list", "~> 1.1"
 
 gem "whenever", "~> 1.0"
+
+
+
+gem "sidekiq", "~> 7.2"
